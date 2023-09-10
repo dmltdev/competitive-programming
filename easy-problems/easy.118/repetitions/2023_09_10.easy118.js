@@ -1,10 +1,11 @@
-// Pascal's triangle daily training
-
 const generate = function (numRows) {
   let triangle = [];
   if (numRows === 0) return triangle;
+
+  triangle.push([1]);
+
   for (let i = 1; i < numRows; i++) {
-    let prevRow = numRows[i - 1];
+    let prevRow = triangle[i - 1];
     let newRow = [1];
 
     for (let j = 1; j < prevRow.length; j++) {
