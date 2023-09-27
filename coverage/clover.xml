@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1695794130119" clover="3.2.0">
-  <project timestamp="1695794130119" name="All files">
+<coverage generated="1695794237678" clover="3.2.0">
+  <project timestamp="1695794237678" name="All files">
     <metrics statements="10" coveredstatements="10" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1" elements="19" coveredelements="19" complexity="0" loc="10" ncloc="10" packages="1" files="1" classes="1"/>
     <file name="easy.941.ts" path="/home/dmlt/repositories/competitive-programming/leetcoding/easy-problems/easy.941/easy.941.ts">
       <metrics statements="10" coveredstatements="10" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
       <line num="35" count="1" type="stmt"/>
-      <line num="37" count="4" type="stmt"/>
-      <line num="38" count="4" type="cond" truecount="2" falsecount="0"/>
+      <line num="37" count="5" type="stmt"/>
+      <line num="38" count="5" type="cond" truecount="2" falsecount="0"/>
       <line num="39" count="6" type="stmt"/>
-      <line num="41" count="4" type="cond" truecount="4" falsecount="0"/>
-      <line num="42" count="1" type="stmt"/>
+      <line num="41" count="5" type="cond" truecount="4" falsecount="0"/>
+      <line num="42" count="2" type="stmt"/>
       <line num="44" count="3" type="cond" truecount="2" falsecount="0"/>
       <line num="45" count="5" type="stmt"/>
       <line num="47" count="3" type="stmt"/>
