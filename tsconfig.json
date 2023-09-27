@@ -1,17 +1,15 @@
 {
   "compilerOptions": {
+    "target": "ESNext",
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "target": "esnext",
-    "module": "esnext",
-    "noImplicitAny": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "removeComments": false,
-    "preserveConstEnums": true,
-    "sourceMap": true,
-    "declaration": true
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "sourceMap": false,
+    "noImplicitAny": false,
+    "noEmit": true,
+    "allowImportingTsExtensions": true
   },
-  "exclude": ["node_modules", "ts.config.js"]
+  "exclude": ["node_modules", "**/__tests__", "**/*.test.ts"]
 }
