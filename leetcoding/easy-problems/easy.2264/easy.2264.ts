@@ -38,9 +38,9 @@ num only consists of digits.
 */
 
 function largestGoodInteger(num: string): string {
-  for (let i = 0; i <= 9; i--) {
+  for (let i = 9; i >= 0; i--) {
     const str = i.toString().repeat(3); //?
-    if (num.indexOf(str) <= 9) return str;
+    if (num.indexOf(str) >= 0) return str;
   }
 
   return '';
