@@ -30,31 +30,6 @@ Constraints:
 num only consists of digits and does not contain any leading zeros.
 */
 
-/* //! This solution does not work with extremely large numbers
-function largestOddNumber(num: string): string {
-  if (Number(num) % 2 === 1) {
-    return num;
-  }
-
-  const substrings: string[] = [];
-  for (let i = 0; i < num.length; i++) {
-    for (let j = i + 1; j <= num.length; j++) {
-      substrings.push(num.slice(i, j));
-    }
-  }
-
-  const oddNumbers = substrings.filter(x => Number(x) % 2 !== 0);
-
-  if (oddNumbers.length === 0) {
-    return '';
-  }
-
-  return Math.max(...oddNumbers.map(Number)).toString();
-}
-
-largestOddNumber('239537672423884969653287101');
-*/
-
 function largestOddNumber(num: string): string {
   for (let i = num.length - 1; i >= 0; i--) {
     if (parseInt(num[i]) % 2 === 1) {
