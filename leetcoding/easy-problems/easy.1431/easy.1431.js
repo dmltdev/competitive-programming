@@ -44,11 +44,15 @@ n == candies.length
  * @param {number} extraCandies
  * @return {boolean[]}
  */
-const kidsWithCandies = function(candies, extraCandies) {
-    const maxCandies= Math.max.apply(null, candies);
-    const greatestCandies = candies.map(candy => candy + extraCandies >= maxCandies ? true : false);
-    return greatestCandies;
+
+const kidsWithCandies = function (candies, extraCandies) {
+  const maxCandies = Math.max.apply(null, candies);
+  const greatestCandies = candies.map(candy =>
+    candy + extraCandies >= maxCandies ? true : false
+  );
+  return greatestCandies;
 };
 
-let candies = [4,2,1,1,2], extraCandies = 1
+let candies = [4, 2, 1, 1, 2],
+  extraCandies = 1;
 kidsWithCandies(candies, extraCandies); //?

@@ -28,6 +28,3 @@ function singleNumber(nums: number[]): number {
   }
   return uniqNum;
 }
-
-let test: number[] = [1, 0, -1];
-singleNumber(test); //?
