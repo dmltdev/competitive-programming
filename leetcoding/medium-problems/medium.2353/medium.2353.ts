@@ -64,10 +64,6 @@ class FoodRatings {
     this.ratings = ratings;
   }
 
-  getRating(food: string): number {
-    return this.ratings[this.foods.indexOf(food)];
-  }
-
   changeRating(food: string, newRating: number): void {
     const index = this.foods.indexOf(food);
     this.ratings[index] = newRating;
@@ -79,13 +75,15 @@ class FoodRatings {
 
     for (let i = 0; i < this.cuisines.length; i++) {
       if (this.cuisines[i] === cuisine) {
-        candidate = this.ratings[i];
-        candidateIndex = i;
-      } else if (
-        this.ratings[i] === candidate &&
-        this.foods[candidateIndex] > this.foods[i]
-      ) {
-        candidateIndex = i;
+        if (this.ratings[i] > candidate) {
+          candidate = this.ratings[i];
+          candidateIndex = i;
+        } else if (
+          this.ratings[i] === candidate &&
+          this.foods[candidateIndex] > this.foods[i]
+        ) {
+          candidateIndex = i;
+        }
       }
     }
 
