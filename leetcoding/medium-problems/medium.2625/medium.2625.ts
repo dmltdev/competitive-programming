@@ -52,18 +52,20 @@ maxDepth <= 1000
 0 <= n <= 1000
 */
 
-const flat = function (arr, n) {
-  const res = [];
+type MultiDimensionalArray = (number | MultiDimensionalArray)[];
 
-  function helper(arr, depth) {
-    for (const element of arr) {
-      if (typeof element === "object" && depth < n) {
-        helper(element, depth + 1);
-      } else {
-        res.push(element);
-      }
+function flat(arr: MultiDimensionalArray, n: number): MultiDimensionalArray {
+  if (n === 0) return arr;
+
+  const res: MultiDimensionalArray = [];
+
+  for (const element of arr) {
+    if (typeof element === 'number') {
+      res.push(element);
+    } else {
+      res.push(...flat(element, n - 1));
     }
-    return res;
   }
-  return helper(arr, 0);
-};
+
+  return res;
+}
