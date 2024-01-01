@@ -11,7 +11,7 @@
   "description": "",
   "dependencies": {
     "jest": "^29.7.0",
-    "jsdom": "^22.1.0",
+    "jsdom": "^23.0.0",
     "nyc": "^15.1.0",
     "prettier": "^3.0.3",
     "typescript": "^5.3.3"
