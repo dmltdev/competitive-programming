@@ -25,7 +25,7 @@ The number of nodes in the tree is in the range [1, 2 * 104].
 All Node.val are unique.
 */
 
-class TreeNode {
+export class TreeNode {
   val: number;
   left: TreeNode | null;
   right: TreeNode | null;
