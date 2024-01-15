@@ -46,6 +46,7 @@ function findWinners(matches: number[][]): number[][] {
   const lossCount = new Map<number, number>();
   const players = new Set<number>();
 
+  // Remove all duplicate elements and get count of losses for each player
   for (const match of matches) {
     const winner = match[0];
     const loser = match[1];
@@ -60,6 +61,7 @@ function findWinners(matches: number[][]): number[][] {
   const noLosses: number[] = [];
   const oneLoss: number[] = [];
 
+  // Distribute players to "noLosses" and "oneLoss" categories based on the number of losses
   for (const player of players) {
     const losses = lossCount.get(player) || 0;
 
@@ -67,9 +69,10 @@ function findWinners(matches: number[][]): number[][] {
     if (losses === 1) oneLoss.push(player);
   }
 
+  // Sort arrays in ascending order as asked in the spec
   noLosses.sort((a, b) => a - b);
   oneLoss.sort((a, b) => a - b);
-
+  
   return [noLosses, oneLoss];
 }
 
