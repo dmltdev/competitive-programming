@@ -26,7 +26,7 @@ devDependencies:
     specifier: ^29.5.5
     version: 29.5.11
   '@types/node':
-    specifier: ^20.11.22
+    specifier: ^20.7.0
     version: 20.11.22
   ts-jest:
     specifier: ^29.1.1
