@@ -18,7 +18,7 @@ dependencies:
     specifier: ^3.0.3
     version: 3.1.1
   typescript:
-    specifier: ^5.4.2
+    specifier: ^5.3.3
     version: 5.4.2
 
 devDependencies:
@@ -26,7 +26,7 @@ devDependencies:
     specifier: ^29.5.5
     version: 29.5.11
   '@types/node':
-    specifier: ^20.11.25
+    specifier: ^20.7.0
     version: 20.11.25
   ts-jest:
     specifier: ^29.1.1
