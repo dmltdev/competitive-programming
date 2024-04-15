@@ -6,7 +6,7 @@ Given the root of a binary tree, return the sum of all left leaves.
 A leaf is a node with no children. A left leaf is a leaf that is the left child of another node.
 */
 
-class TreeNode {
+export class TreeNode {
   val: number;
   left: TreeNode | null;
   right: TreeNode | null;
@@ -17,23 +17,18 @@ class TreeNode {
   }
 }
 
-function helper(root: TreeNode | null, sum: { val: number }) {
-  if (root === null) return;
+function sumOfLeftLeaves(root: TreeNode | null): number {
+  if (!root) return 0;
 
+  let sum: number = 0;
   if (root.left && root.left.left === null && root.left.right === null) {
-    sum.val += root.left.val; //?
+    sum += root.left.val;
   }
 
-  helper(root.left, sum);
-  helper(root.right, sum);
-}
+  sum += sumOfLeftLeaves(root.left);
+  sum += sumOfLeftLeaves(root.right);
 
-function sumOfLeftLeaves(root: TreeNode | null): number {
-  let sum = { val: 0 };
-
-  helper(root, sum);
-
-  return sum.val;
+  return sum;
 }
 
 const tree = new TreeNode(3);
