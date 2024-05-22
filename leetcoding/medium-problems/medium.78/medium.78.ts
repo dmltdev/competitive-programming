@@ -26,7 +26,7 @@ Constraints:
 All the numbers of nums are unique.
 */
 
-function subsets(nums: number[]): number[][] {
+export function subsets(nums: number[]): number[][] {
   const result: number[][] = [[]];
 
   for (let num of nums) {
