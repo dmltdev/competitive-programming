@@ -22,6 +22,8 @@ Explanation
 Last 4 characters are irts and their reversed order is stri.
 */
 
+const { reverse } = require("dns");
+
 function lastNRevert(text, n) {
   const lastNChars = text.slice(text.length - n, text.length);
 
@@ -32,7 +34,7 @@ function lastNRevert(text, n) {
     return reverseString(str.substr(1)) + str.charAt(0);
   }
 
-  return reverseString(lastNChars);
+  return reverseString(str);
 }
 
 const rev1 = lastNRevert('T-shirts', 4);
