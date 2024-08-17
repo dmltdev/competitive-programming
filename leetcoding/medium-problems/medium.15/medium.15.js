@@ -35,33 +35,44 @@ Constraints:
 -105 <= nums[i] <= 105
 */
 
+/**
+ * Finds all unique triplets in the array that sum up to zero.
+ *
+ * @param {number[]} nums - An array of integers.
+ * @returns {number[][]} - An array of unique triplets that sum up to zero.
+ */
 const threeSum = function (nums) {
-  nums = nums.sort((a, b) => a - b);
+  nums.sort((a, b) => a - b);
+  const result = [];
 
-  let arr = [];
-
-  for (let i = 0; i < nums.length - 2; i++) {
-    // Ignore duplicates before declaring left and right
-    if (i > 0 && nums[i] === nums[i - 1]) {
-      continue;
-    }
-
-    let left = i + 1;
+  function findPairs(target, start) {
+    let left = start;
     let right = nums.length - 1;
 
     while (left < right) {
-      if (nums[i] + nums[left] + nums[right] === 0) {
-        arr.push([nums[i], nums[left], nums[right]]);
+      const sum = nums[left] + nums[right];
+      
+      if (sum === target) {
+        result.push([-target, nums[left], nums[right]]);
+        // Skip duplicate values for the second and third elements
         while (left < right && nums[left] === nums[left + 1]) left++;
         while (left < right && nums[right] === nums[right - 1]) right--;
         left++;
         right--;
-      } else if (nums[i] + nums[left] + nums[right] > 0) {
-        right--;
-      } else {
+      } else if (sum < target) {
         left++;
+      } else {
+        right--;
       }
     }
   }
-  return arr;
+
+  for (let i = 0; i < nums.length - 2; i++) {
+    // Skip duplicate values for the first element
+    if (i > 0 && nums[i] === nums[i - 1]) continue;
+
+    findPairs(-nums[i], i + 1);
+  }
+
+  return result;
 };
