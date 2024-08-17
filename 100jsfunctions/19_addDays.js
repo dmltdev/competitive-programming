@@ -47,6 +47,6 @@ function addDays(initialDate, daysCount) {
   return new Date(initialDate.getTime() + daysCount * millisecondsPerDay);
 }
 
-const date1 = new Date('2022-01-20');
+const date1 = new Date("2022-01-20");
 const date2 = addDays(date1, 10);
 console.log(date2);

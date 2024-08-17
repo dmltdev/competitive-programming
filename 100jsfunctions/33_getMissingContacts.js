@@ -20,21 +20,22 @@ size: 3
 <prototype>: Object
 */
 
+function getMissingContactsForUser(userId, contacts, contactIds) {
+  return contactIds.filter(
+    contact => contact !== userId && !contacts.includes(contact)
+  );
+}
+
 function getMissingContacts(contactsMap) {
   const result = new Map();
   const contactIds = Array.from(contactsMap.keys());
 
   for (const [userId, contacts] of contactsMap) {
-    const missingContacts = [];
-
-    for (const contact of contactIds) {
-      if (contact === userId) continue;
-
-      if (!contacts.includes(contact)) {
-        missingContacts.push(contact);
-      }
-    }
-
+    const missingContacts = getMissingContactsForUser(
+      userId,
+      contacts,
+      contactIds
+    );
     result.set(userId, missingContacts);
   }
 
@@ -42,7 +43,7 @@ function getMissingContacts(contactsMap) {
 }
 
 const map = new Map();
-map.set('user1', ['user2', 'user3']);
-map.set('user2', []);
-map.set('user3', []);
+map.set("user1", ["user2", "user3"]);
+map.set("user2", []);
+map.set("user3", []);
 console.log(getMissingContacts(map));
