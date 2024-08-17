@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose --coverage --watchAll"
+    "test": "jest --verbose --coverage --watchAll",
+    "typesync": "pnpm dlx typesync"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.5",
+    "@types/jsdom": "~21.1.7",
     "@types/node": "^20.7.0",
     "ts-jest": "^29.1.1"
   }
