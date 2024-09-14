@@ -1,6 +1,3 @@
 function extractElementsBetweenPositions(numbers, n, m) {
-  const min = Math.min(n, m);
-  const max = Math.max(n, m);
-  
-  return numbers.slice(min, max + 1);
+  return numbers.slice(Math.min(n, m), Math.max(n, m) + 1);
 }

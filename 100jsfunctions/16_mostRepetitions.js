@@ -10,19 +10,20 @@ Write a function named mostRepetitions that receives 3 parameters:
 and returns the string that has the most occurrences of the specified letter. If both have the same number of occurrences return string1.
 */
 
-function mostRepetitions(str1, str2, letter) {
-  let left = 0;
-  let right = 0;
+function stringOccurrence(str, letter) {
+  let counter = 0;
 
-  for (const str of str1) {
-    if (str === letter) left++;
-  }
+  for (const char of str) if (char === letter) counter++;
 
-  for (const str of str2) {
-    if (str === letter) right++;
-  }
-
-  return left > right ? str1 : left === right ? str1 : str2;
+  return counter;
 }
 
-console.log(mostRepetitions('Los Angeles', 'Texas', 's'));
+function mostRepetitions(str1, str2, letter) {
+  const left = stringOccurrence(str1, letter);
+  const right = stringOccurrence(str2, letter);
+
+  if (left > right) return str1;
+  if (right > left) return str2;
+
+  return str1;
+}

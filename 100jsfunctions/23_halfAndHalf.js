@@ -5,3 +5,4 @@ function halfAndHalf(text) {
 
   return firstHalf + secondHalf;
 }
+
