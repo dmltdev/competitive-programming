@@ -22,19 +22,16 @@ Explanation
 Last 4 characters are irts and their reversed order is stri.
 */
 
-const { reverse } = require("dns");
-
 function lastNRevert(text, n) {
-  const lastNChars = text.slice(text.length - n, text.length);
+  const lastNChars = text.slice(-n);
 
-  // https://www.freecodecamp.org/news/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb/
   function reverseString(str) {
     if (str == '') return '';
 
     return reverseString(str.substr(1)) + str.charAt(0);
   }
 
-  return reverseString(str);
+  return reverseString(lastNChars);
 }
 
 const rev1 = lastNRevert('T-shirts', 4);
