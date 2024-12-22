@@ -63,8 +63,6 @@ function hasPathSum(root: TreeNode | null, targetSum: number): boolean {
     return sum === 0;
   }
 
-  console.log(root.val, sum);
-
   return hasPathSum(root.left, sum) || hasPathSum(root.right, sum);
 }
 
