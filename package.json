@@ -13,15 +13,15 @@
   "description": "",
   "dependencies": {
     "jest": "^29.7.0",
-    "jsdom": "^24.0.0",
-    "nyc": "^15.1.0",
-    "prettier": "^3.0.3",
-    "typescript": "^5.5.4"
+    "jsdom": "^25.0.1",
+    "nyc": "^17.1.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.5",
+    "@types/jest": "^29.5.14",
     "@types/jsdom": "~21.1.7",
-    "@types/node": "^20.7.0",
-    "ts-jest": "^29.1.1"
+    "@types/node": "^22.10.2",
+    "ts-jest": "^29.2.5"
   }
 }
