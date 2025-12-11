@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose --coverage --watchAll",
+    "test": "jest --verbose --watchAll",
     "typesync": "pnpm dlx typesync"
   },
   "keywords": [],
