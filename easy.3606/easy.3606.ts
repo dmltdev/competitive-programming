@@ -54,41 +54,31 @@ isActive[i] is either true or false.
 */
 
 function validateCoupons(codes: string[], businessLine: string[], isActive: boolean[]): string[] {
-  const map: {
-    [code: string]: { businessLine: string; isActive: boolean; isValid: boolean };
-  } = {};
   const REGEX = /^[a-zA-Z0-9_]+$/;
-  const COUPON_CATEGORIES: string[] = ["electronics", "grocery", "pharmacy", "restaurant"];
+  const COUPON_CATEGORIES = ["electronics", "grocery", "pharmacy", "restaurant"];
+
+  const validCoupons: Array<{ code: string; businessLine: string }> = [];
 
   for (let i = 0; i < codes.length; i++) {
     const code = codes[i];
     const line = businessLine[i];
     const active = isActive[i];
 
-    map[code] = {
-      businessLine: line,
-      isActive: active,
-      isValid: code.length > 0 && REGEX.test(code) && active && COUPON_CATEGORIES.includes(line),
-    };
-  }
-
-  const validCoupons: string[] = [];
-
-  for (const [k, v] of Object.entries(map)) {
-    if (v.isValid) validCoupons.push(k);
-  }
-
-  return validCoupons.sort((a, b) => {
-    const lineA = map[a].businessLine;
-    const lineB = map[b].businessLine;
-
-    const indexA = COUPON_CATEGORIES.indexOf(lineA);
-    const indexB = COUPON_CATEGORIES.indexOf(lineB);
-
-    if (indexA !== indexB) {
-      return indexA - indexB;
+    if (code.length > 0 && REGEX.test(code) && active && COUPON_CATEGORIES.includes(line)) {
+      validCoupons.push({ code, businessLine: line });
     }
+  }
 
-    return a.localeCompare(b);
-  });
+  return validCoupons
+    .sort((a, b) => {
+      const indexA = COUPON_CATEGORIES.indexOf(a.businessLine);
+      const indexB = COUPON_CATEGORIES.indexOf(b.businessLine);
+
+      if (indexA !== indexB) {
+        return indexA - indexB;
+      }
+
+      return a.code < b.code ? -1 : a.code > b.code ? 1 : 0;
+    })
+    .map((c) => c.code);
 }
