@@ -1,7 +1,7 @@
-import numSpecial from './easy.1582.ts';
+import numSpecial from "./easy.1582.js";
 
-describe('numSpecial [easy, 1582]', () => {
-  test('it should return the correct number of special positions in a binary matrix', () => {
+describe("numSpecial [easy, 1582]", () => {
+  test("it should return the correct number of special positions in a binary matrix", () => {
     const matrix1: number[][] = [
       [1, 0, 0],
       [0, 0, 1],
@@ -34,5 +34,5 @@ describe('numSpecial [easy, 1582]', () => {
     ];
 
     expect(numSpecial(matrix)).toEqual(0);
-  })
+  });
 });

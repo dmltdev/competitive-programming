@@ -1,4 +1,4 @@
-import validMountainArray from "./easy.941";
+import validMountainArray from "./easy.941.js";
 
 describe("Valid Mountain Array", () => {
   it("Negative cases", () => {

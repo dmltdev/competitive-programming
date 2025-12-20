@@ -8,18 +8,18 @@ You may assume that each input would have exactly one solution, and you may not 
 You can return the answer in any order.
 */
 
+// Hash map
 function twoSum(nums: number[], target: number): number[] {
-  let map = new Map();
+  const map = new Map<number, number>();
 
   for (let i = 0; i < nums.length; i++) {
-    let num1 = nums[i];
-    let num2 = target - num1;
+    const complement = target - nums[i];
 
-    if (map.has(num2)) {
-      return [i, map.get(num2)];
+    if (map.has(complement)) {
+      return [map.get(complement)!, i];
     }
 
-    map.set(num1, i);
+    map.set(nums[i], i);
   }
 
   return [];
