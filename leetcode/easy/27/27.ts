@@ -50,19 +50,30 @@ Constraints:
 */
 
 
-/**
- * @param {number[]} nums
- * @param {number} val
- * @return {number}
- */
+function removeElement_fast_slow_pointer(nums: number[], val: number): number {
+  let k = 0;
 
-
-function removeElement (nums: number[], val: number):number {
-  let j = 0;
   for (let i = 0; i < nums.length; i++) {
     if (nums[i] !== val) {
-      nums[j++] = nums[i];
+      nums[k++] = nums[i];
     }
   }
-  return j;
-};
+
+  return k;
+}
+
+function removeElement(nums: number[], val: number): number {
+  let left = 0;
+  let right = nums.length - 1;
+
+  while (left <= right) {
+    if (nums[left] === val) {
+      nums[left] = nums[right];
+      right--;
+    } else {
+      left++;
+    }
+  }
+
+  return left;
+}
