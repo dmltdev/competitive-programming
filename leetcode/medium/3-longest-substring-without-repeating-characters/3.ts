@@ -32,10 +32,10 @@ s consists of English letters, digits, symbols and spaces.
 */
 
 function lengthOfLongestSubstring(s: string): number {
-  let left = 0,
-    right = 0,
-    max = 0;
-  const set: Set<string> = new Set();
+  let left = 0;
+  let right = 0;
+  let max = 0;
+  const set = new Set<string>();
 
   while (right < s.length) {
     if (set.has(s[right])) {
