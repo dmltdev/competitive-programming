@@ -34,7 +34,7 @@ Constraints:
 Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
 */
 
-function maxSubArray(nums: number[]): number {
+function maxSubArray_one(nums: number[]): number {
   let maxSum: number = nums[0];
   let currSum = 0;
 
@@ -45,6 +45,18 @@ function maxSubArray(nums: number[]): number {
 
     currSum += nums[i];
     maxSum = Math.max(maxSum, currSum);
+  }
+
+  return maxSum;
+}
+
+function maxSubArray(nums: number[]): number {
+  let maxSum = nums[0];
+  let currentSum = nums[0];
+
+  for (let i = 1; i < nums.length; i++) {
+    currentSum = Math.max(nums[i], currentSum + nums[i]);
+    maxSum = Math.max(maxSum, currentSum);
   }
 
   return maxSum;
