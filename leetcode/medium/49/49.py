@@ -28,19 +28,34 @@ Constraints:
 strs[i] consists of lowercase English letters.
 """
 
+from collections import defaultdict
 from typing import List
 
-class Solution:
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-      map = {}
+# class Solution:
+#     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+#       map = {}
       
-      for str in strs:
-        letter = ''.join(sorted(str))
-        if letter not in map:
-          map[letter] = []
-        map[letter].append(str)
+#       for str in strs:
+#         letter = ''.join(sorted(str))
+#         if letter not in map:
+#           map[letter] = []
+#         map[letter].append(str)
         
-      return list(map.values())
+#       return list(map.values())
 
-solution = Solution()
-print(solution.groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']))
+# solution = Solution()
+# print(solution.groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']))
+
+class Solution:
+  def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+    res = defaultdict(list)
+
+    for s in strs:
+      count = [0] * 26
+      
+      for c in s:
+        count[ord(c) - ord("a")] += 1
+
+      res[tuple(count)].append(s)
+
+    return list(res.values())
