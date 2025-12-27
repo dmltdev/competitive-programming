@@ -26,12 +26,32 @@ Constraints:
 
 */
 
+// Method 1: Frequency Map
+// Time O(n)
+// Space O(n)
+// This works, but the frequency count does not matter since we only care about presence, not count.
+function containsDuplicate_v1(nums: number[]): boolean {
+  const map = new Map<number, number>();
+
+  for (let i = 0; i < nums.length; i++) {
+    if (map.has(nums[i])) {
+      return true;
+    }
+    const curr = map.get(nums[i]) || 0;
+    map.set(nums[i], curr + 1);
+  }
+
+  return false;
+}
+
 function containsDuplicate(nums: number[]): boolean {
-  const set = new Set();
+  const seen = new Set<number>();
 
   for (const num of nums) {
-    if (set.has(num)) return true;
-    set.add(num);
+    if (seen.has(num)) {
+      return true;
+    }
+    seen.add(num);
   }
 
   return false;

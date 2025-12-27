@@ -28,17 +28,43 @@ Constraints:
 strs[i] consists of lowercase English letters.
 */
 
-function groupAnagrams(strs: string[]): string[][] {
-  const map = new Map<string, string[]>();
+// Groups map; key is sorted string, value is array of anagrams
+// Time: O(n * k log k), where n is number of strings and k is max length of string
+// Space: O(n * k) => storing all strings in the output + hash map overhead (O(n) keys, each of length k => O(n * k) space)
+function groupAnagrams_v1(strs: string[]): string[][] {
+  const groups = new Map<string, string[]>();
 
-  for (let str of strs) {
-    const letter = str.split('').sort().join('');
-    const result = map.get(letter) || [];
-    result.push(str);
-    map.set(letter, result);
+  for (const str of strs) {
+    const key = str.split("").sort().join("");
+
+    if (!groups.has(key)) {
+      groups.set(key, []);
+    }
+    groups.get(key)!.push(str);
   }
 
-  return Array.from(map.values());
+  return Array.from(groups.values());
 }
 
-console.log(groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']));
+// Character frequency key
+// Avoids sorting (useful for very long strings)
+// Time: O(n * k), where n is number of strings and k is max length of string
+// Space: O(n * k) => storing all strings in the output + hash map overhead (O(n) keys, each of length k => O(n * k) space)
+function groupAnagrams_v2(strs: string[]): string[][] {
+  const groups = new Map<string, string[]>();
+
+  for (const str of strs) {
+    const counts = new Array(26).fill(0);
+    for (const char of str) {
+      counts[char.charCodeAt(0) - 97]++;
+    }
+
+    const key = counts.join(",");
+    if (!groups.has(key)) {
+      groups.set(key, []);
+    }
+    groups.get(key)!.push(str);
+  }
+
+  return Array.from(groups.values());
+}

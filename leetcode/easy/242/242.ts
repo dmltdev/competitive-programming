@@ -9,23 +9,17 @@ typically using all the original letters exactly once.
 
 function isAnagram(s: string, t: string): boolean {
   if (s.length !== t.length) return false;
-
-  const map = new Map<string, number>();
+  const counts: number[] = new Array(26).fill(0);
 
   for (let i = 0; i < s.length; i++) {
-    const char = map.get(s[i]);
-    map.set(s[i], (char ?? 0) + 1);
+    counts[s.charCodeAt(i) - 97]++;
+    counts[t.charCodeAt(i) - 97]--;
   }
 
-  for (let i = 0; i <= t.length; i++) {
-    const value = map.get(t[i]);
-
-    if (value === undefined) return false;
-    if (value === 0) map.delete(t[i]);
-    if (value > 0) map.set(t[i], value - 1);
+  for (const c of counts) {
+    if (c !== 0) return false;
   }
-
-  return ![...map.values()].some(Boolean);
+  return true;
 }
 
-isAnagram('anagram', 'nagaram'); //?
+isAnagram("anagram", "nagaram"); //?
