@@ -14,9 +14,9 @@ Every close bracket has a corresponding open bracket of the same type.
 function isValid(s: string): boolean {
   const stack: string[] = [];
   let brackets: Record<string, string> = {
-    '(': ')',
-    '{': '}',
-    '[': ']',
+    "(": ")",
+    "{": "}",
+    "[": "]",
   };
 
   for (let i = 0; i < s.length; i++) {
@@ -25,6 +25,7 @@ function isValid(s: string): boolean {
       stack.push(char);
     } else {
       const top = stack.pop();
+
       if (top === undefined || brackets[top] !== char) {
         return false;
       }
@@ -34,9 +35,9 @@ function isValid(s: string): boolean {
   return stack.length === 0;
 }
 
-console.log(isValid('()')); // true
-console.log(isValid('()[]{}')); // true
-console.log(isValid('(]')); // false
-console.log(isValid('([)]')); // false
-console.log(isValid('{[]}')); // true
-console.log(isValid('({[()]})')); // true
+console.log(isValid("()")); // true
+console.log(isValid("()[]{}")); // true
+console.log(isValid("(]")); // false
+console.log(isValid("([)]")); // false
+console.log(isValid("{[]}")); // true
+console.log(isValid("({[()]})")); // true
