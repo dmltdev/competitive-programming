@@ -29,18 +29,57 @@ Constraints:
 1 <= n <= 45
 */
 
-function climbStairs(n: number): number {
-  if (n <= 2) return n;
-  let steps = 0;
-  let prevShortStep = 1,
-    prevLongStep = 2;
-
-  for (let i = 1; i < n - 1; i++) {
-    steps = prevShortStep + prevLongStep;
-    [prevShortStep, prevLongStep] = [prevLongStep, steps];
+// Solution 1: Recursion
+function climbStairs_recursion(n: number): number {
+  if (n === 0 || n === 1) {
+    return 1;
   }
-
-  return steps;
+  return climbStairs_recursion(n - 1) + climbStairs_recursion(n - 2);
 }
 
-climbStairs(5) //?
+// Solution 2: Memoization
+function climbStairs_memoization(n: number): number {
+  const memo: Record<number, number> = {};
+
+  function helper(n: number, memo: Record<number, number>): number {
+    if (n === 0 || n === 1) return 1;
+    if (!memo[n]) {
+      memo[n] = helper(n - 1, memo) + helper(n - 2, memo);
+    }
+    return memo[n];
+  }
+
+  return helper(n, memo);
+}
+
+// Solution 3: Tabulation
+function climbStairs_tabulation(n: number): number {
+  if (n === 0 || n === 1) {
+    return 1;
+  }
+
+  const dp = Array(n + 1).fill(0);
+  dp[0] = dp[1] = 1;
+
+  for (let i = 2; i < n + 1; i++) {
+    dp[i] = dp[i - 1] + dp[i - 2];
+  }
+
+  return dp[n];
+}
+
+// Solution 4: Space Optimization
+function climbStairs(n: number): number {
+  if (n === 0 || n === 1) {
+    return 1;
+  }
+
+  let prev = 1;
+  let curr = 1;
+
+  for (let i = 2; i <= n; i++) {
+    [prev, curr] = [curr, prev + curr];
+  }
+
+  return curr;
+}

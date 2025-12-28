@@ -13,7 +13,7 @@ Every close bracket has a corresponding open bracket of the same type.
 
 function isValid(s: string): boolean {
   const stack: string[] = [];
-  let brackets: { [key: string]: string } = {
+  let brackets: Record<string, string> = {
     '(': ')',
     '{': '}',
     '[': ']',
