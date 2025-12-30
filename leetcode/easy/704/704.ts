@@ -32,14 +32,15 @@ function search(nums: number[], target: number): number {
   let right = nums.length - 1;
 
   while (left <= right) {
-    const middle = Math.floor((left + right) / 2);
+    const mid = Math.floor((left + right) / 2);
+    const guess = nums[mid];
 
-    if (nums[middle] === target) {
-      return middle;
-    } else if (nums[middle] < target) {
-      left = middle + 1;
+    if (guess === target) {
+      return mid;
+    } else if (guess < target) {
+      left = mid + 1;
     } else {
-      right = middle - 1;
+      right = mid - 1;
     }
   }
 
