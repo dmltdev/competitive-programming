@@ -27,40 +27,35 @@ n == nums.length
 Follow-up: Could you solve the problem in linear time and in O(1) space?
 */
 
-//! Initial solution: time complexity O(n), but space complexity is O(k). Utilizes hash map.
-/*
-function majorityElement(nums: number[]): number {
-  let hash = new Map();
+// Sort array + return a middle element
+function majorityElement_sort(nums: number[]): number {
+  nums.sort((a, b) => a - b);
+  const mid = Math.floor(nums.length / 2);
+  return nums[mid];
+}
+
+// Populate the frequency map, get min count and compare each key in map against min count
+function majorityElement_hashmap(nums: number[]): number {
+  const map = new Map<number, number>();
 
   for (let i = 0; i < nums.length; i++) {
-    let key = nums[i];
+    const curr = map.get(nums[i]) || 0;
+    map.set(nums[i], curr + 1);
+  }
 
-    if (!hash.has(key)) {
-      hash.set(key, 1);
-    } else {
-      let newValue = hash.get(key);
-      newValue++;
+  const minCount = Math.floor(nums.length / 2);
 
-      hash.set(key, newValue);
+  for (const [k, v] of map) {
+    if (v > minCount) {
+      return Number(k);
     }
   }
 
-  let maxValue = -Infinity;
-  let maxKey = null;
-
-  for (const [key, value] of hash.entries()) {
-    if (value > maxValue) {
-      maxValue = value;
-      maxKey = key;
-    }
-  }
-
-  return maxKey;
+  return 0;
 }
-*/
 
-//! Solution using the "Boyer-Moore Voting Algorithm" algorithm
-function majorityElement(nums: number[]): number {
+// Boyer-Moore voting algorithm
+function majorityElement_boyermoore(nums: number[]): number {
   let candidate = nums[0];
   let count = 1;
 
