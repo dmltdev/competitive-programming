@@ -27,26 +27,27 @@ Follow up: Your algorithm's time complexity must be better than O(n log n), wher
 */
 
 function topKFrequent(nums: number[], k: number): number[] {
-  const count: Map<number, number> = new Map();
+  const count = new Map<number, number>();
+
   const bucket: number[][] = Array.from({ length: nums.length + 1 }, () => []);
 
   for (const num of nums) {
-    count.set(num, 1 + (count.get(num) || 0));
+    const val = count.get(num) || 0;
+    count.set(num, val + 1);
   }
 
-  for (const [key, value] of count) {
-    bucket[value].push(key);
+  for (const [k, v] of count) {
+    bucket[v].push(k);
   }
 
-  const res: number[] = [];
+  const ans: number[] = [];
   for (let i = bucket.length - 1; i > 0; i--) {
     for (const num of bucket[i]) {
-      res.push(num);
-      if (res.length === k) {
-        return res;
+      ans.push(num);
+      if (ans.length === k) {
+        return ans;
       }
     }
   }
-
-  return res;
+  return ans;
 }
