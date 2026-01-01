@@ -37,27 +37,29 @@ The number of nodes in the list is in the range [0, 104].
  * }
  */
 
-// function removeElements(head: ListNode | null, val: number): ListNode | null {
-//   if (!head) return null;
-
-//   let curr: ListNode = head;
-
-//   while (head && head.val === val) {
-//     head = head.next;
-//   }
-
-//   while (curr && curr.next) {
-//     if (curr.next.val === val) {
-//       curr.next = curr.next.next
-//     } else {
-//       curr = curr.next
-//     }
-//   }
-
-//   return head;
-// }
-
+// Iterative approach
 function removeElements(head: ListNode | null, val: number): ListNode | null {
+   if (!head) return null;
+
+   let curr: ListNode = head;
+
+   while (head && head.val === val) {
+     head = head.next;
+   }
+
+   while (curr && curr.next) {
+     if (curr.next.val === val) {
+       curr.next = curr.next.next
+     } else {
+       curr = curr.next
+     }
+   }
+
+   return head;
+ }
+
+// Recursive approach
+function removeElements_recursive(head: ListNode | null, val: number): ListNode | null {
   if (head === null) return null
   if (head.val === val) return removeElements(head.next, val)
   return (head.next = removeElements(head.next, val), head) 
