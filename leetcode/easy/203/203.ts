@@ -60,7 +60,13 @@ function removeElements(head: ListNode | null, val: number): ListNode | null {
 
 // Recursive approach
 function removeElements_recursive(head: ListNode | null, val: number): ListNode | null {
+  // base case: reached end of list
   if (head === null) return null
-  if (head.val === val) return removeElements(head.next, val)
+  // decision point: should we keep this this node?
+  if (head.val === val) {
+     // skip current node, return cleaned tail
+     return removeElements(head.next, val)
+  }
+  // keep current node, attach cleaned tail
   return (head.next = removeElements(head.next, val), head) 
 };
