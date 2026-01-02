@@ -34,22 +34,15 @@ class ListNode {
 }
 
 function deleteDuplicates(head: ListNode | null): ListNode | null {
-  let curr: ListNode | null = head;
+  let curr = head;
 
   while (curr) {
     if (curr.next && curr.val === curr.next.val) {
       curr.next = curr.next.next;
       continue;
     }
-
     curr = curr.next;
   }
 
   return head;
 }
-
-const head = new ListNode(1);
-head.next = new ListNode(1);
-head.next.next = new ListNode(2);
-deleteDuplicates(head);
-console.log(head); //?
