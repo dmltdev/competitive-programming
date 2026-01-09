@@ -1,19 +1,18 @@
-const mySqrt = function (num: number): number {
-  let start = 1,
-    end = num;
+function mySqrt(x: number): number {
+  let start = 1;
+  let end = x;
 
   while (start <= end) {
-    let middle = Math.floor((start + end) / 2);
+    const mid = Math.floor((start + end) / 2);
 
-    if (middle ** 2 == num) {
-      return middle;
-    }
-
-    if (middle ** 2 > num) {
-      end = middle - 1;
+    if (mid * mid === x) {
+      return mid;
+    } else if (mid * mid > x) {
+      end = mid - 1;
     } else {
-      start = middle + 1;
+      start = mid + 1;
     }
   }
+
   return end;
-};
+}
