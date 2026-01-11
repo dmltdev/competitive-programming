@@ -54,4 +54,4 @@ function isPathCrossing(path: string): boolean {
   return false;
 }
 
-isPathCrossing('NESWW'); //?
+isPathCrossing('NESWW');
