@@ -72,6 +72,7 @@ Output:
 Explanation: Max and Jim both have the highest salary in the IT department and Henry has the highest salary in the Sales department.
 */
 
+-- Solution 1: Three-way join
 SELECT
     e.name AS Employee,
     e.salary AS Salary,
@@ -84,3 +85,18 @@ JOIN (
     GROUP BY departmentID
 ) m ON e.departmentId = m.departmentId
     AND e.salary = m.MaxSalary;
+
+-- Solution 2: Window function with DENSE_RANK
+WITH RankedEmployees AS (
+    SELECT
+        e.name AS Employee,
+        e.salary AS Salary,
+        d.name AS Department,
+        DENSE_RANK() OVER (PARTITION BY e.departmentId ORDER BY e.salary DESC) AS salary_rank
+    FROM Employee e
+    INNER JOIN Department d ON e.departmentId = d.id
+)
+SELECT Department, Employee, Salary
+FROM RankedEmployees
+WHERE salary_rank = 1;
+
